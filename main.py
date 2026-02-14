@@ -26,7 +26,8 @@ logger.addHandler(console_handler)
 # =============================================================================
 # CONFIGURATION
 # =============================================================================
-DRIFT_THRESHOLD = float(os.environ.get("DRIFT_THRESHOLD", "0.05"))  # Default 5%
+_drift_threshold_str = os.environ.get("DRIFT_THRESHOLD", "").strip()
+DRIFT_THRESHOLD = float(_drift_threshold_str) if _drift_threshold_str else 0.05  # Default 5%
 WARMUP_PERIOD_DAYS = 14  # Send daily emails for first 2 weeks
 
 # =============================================================================
